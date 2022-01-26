@@ -7,6 +7,7 @@
   --color-light-yellow: #F2B137;
   --color-light-yellow-hover: #FFC860;
   --color-dark-navy: #1A2A33;
+  --color-semi-dark-navy: #1F3641;
   --color-silver: #A8BFC9;
   --color-silver-hover: #DBE8ED;
 
@@ -26,6 +27,8 @@
   --font-weight-heading: 700;
   --font-weight-body: 500;
 
+  --box-shadow-color: rgba(0,0,0,0.4);
+
 }
 
 *,*::after, *::before {
@@ -34,7 +37,9 @@
 
 body{
   margin: 0;
+  min-height: 100vh;
   font-family: 'Outfit', sans-serif;
+  background-color: var(--color-dark-navy);
 }
 
 button, input, textarea {

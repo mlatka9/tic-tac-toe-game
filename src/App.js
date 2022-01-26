@@ -1,7 +1,7 @@
 import styles from 'App.module.scss';
 
 function App() {
-  return <div className={styles.class}>Hello world</div>;
+  return <></>;
 }
 
 export default App;

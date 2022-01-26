@@ -3,7 +3,7 @@ import Button from './Button';
 import { ReactComponent as Icon } from 'assets/icon-restart.svg';
 
 export default {
-  title: 'Example/Button',
+  title: 'TicTacToe/Button',
   component: Button,
 };
 
