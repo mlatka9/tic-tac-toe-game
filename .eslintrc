@@ -1,0 +1,7 @@
+{
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": ["warn", {"singleQuote": true, "endOfLine": "auto"}]
+    },
+    "extends": ["plugin:prettier/recommended", "react-app", "react-app/jest"]
+  }
