@@ -1,9 +1,9 @@
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
     max-width: 460px;
-    width: 100%;
+    // width: 100%;
     margin: 0 auto;
     > button:first-of-type {
         margin-bottom: 20px;
@@ -83,4 +83,9 @@
     path {
         fill: var(--color-silver);
     }
+}
+
+.logoWrapper {
+    display: flex;
+    justify-content: center;
 }

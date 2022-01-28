@@ -1,6 +1,6 @@
 import styles from './Button.module.scss';
 
-const Button = ({ children, isSmall, isSecondary, isTertiary }) => {
+const Button = ({ children, isSmall, isSecondary, isTertiary, ...props }) => {
   const className = `
   ${styles.button}
   ${isSmall && styles.buttonSmall}
@@ -8,7 +8,11 @@ const Button = ({ children, isSmall, isSecondary, isTertiary }) => {
   ${isTertiary && styles.buttonTertiary}
   }`;
 
-  return <button className={className}>{children}</button>;
+  return (
+    <button className={className} {...props}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

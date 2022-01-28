@@ -10,7 +10,7 @@
     font-size: var(--font-size-heading-l);
     font-weight: var(--font-weight-heading);
     letter-spacing: var(--letter-spacing-heading-l);
-    margin: 0 0 0 24px;
+    margin: 0;
     color: var(--color-light-blue);
     @media(max-width: 600px) {
         font-size: var(--font-size-heading-m);
@@ -20,6 +20,10 @@
 
 .headerYellow {
     color: var(--color-light-yellow);
+}
+
+.headerSilver {
+    color: var(--color-silver);
 }
 
 .info {
@@ -45,6 +49,7 @@
     }
 }
 .icon {
+    margin: 0 24px 0 0;
     width: 64px;
     @media(max-width: 600px) {
         width: 28px;
