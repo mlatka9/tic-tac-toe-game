@@ -4,7 +4,7 @@ import { ReactComponent as IconO } from 'assets/icon-o.svg';
 import { ReactComponent as IconXOutline } from 'assets/icon-x-outline.svg';
 import { ReactComponent as IconOOutline } from 'assets/icon-o-outline.svg';
 
-const BoardCard = ({ mark, currentTurn, updateBoard, isBlocked }) => {
+const BoardCard = ({ mark, currentMark, updateBoard, isBlocked }) => {
   const getMark = () => {
     if (mark === 'X') {
       return <IconX className={styles.markImage} />;
@@ -12,7 +12,7 @@ const BoardCard = ({ mark, currentTurn, updateBoard, isBlocked }) => {
     if (mark === 'O') {
       return <IconO className={styles.markImage} />;
     }
-    if (currentTurn === 'X') {
+    if (currentMark === 'X') {
       return (
         <IconXOutline
           className={`${styles.hoveredMarkImage} ${

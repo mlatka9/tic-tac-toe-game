@@ -6,14 +6,9 @@ function App() {
   const [isDurringGame, setIsDurringGame] = useState(false);
 
   const [players, setPlayers] = useState({
-    player1: 'cpu',
-    player2: 'cpu',
+    X: 'cpu',
+    O: 'cpu',
   });
-
-  // const [setup, setSetup] = useState({
-  //   player1Mark: null,
-  //   opponent: '',
-  // });
 
   return isDurringGame ? (
     <GameView players={players} setIsDurringGame={setIsDurringGame} />

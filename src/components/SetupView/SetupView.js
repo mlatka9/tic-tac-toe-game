@@ -10,8 +10,8 @@ const SetupView = ({ setIsDurringGame, setPlayers }) => {
 
   const handleSetup = (opponent) => {
     setPlayers({
-      player1: playerFirstMark === 'X' ? 'player' : opponent,
-      player2: playerFirstMark === 'O' ? 'player' : opponent,
+      X: playerFirstMark === 'X' ? 'player' : opponent,
+      O: playerFirstMark === 'O' ? 'player' : opponent,
     });
 
     setIsDurringGame(true);

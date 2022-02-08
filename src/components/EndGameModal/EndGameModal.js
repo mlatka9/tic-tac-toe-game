@@ -4,7 +4,7 @@ import { ReactComponent as IconX } from 'assets/icon-x.svg';
 import { ReactComponent as IconO } from 'assets/icon-o.svg';
 import styles from './EndGameModal.module.scss';
 
-const EndGameModal = ({ winnerMark, setIsDurringGame, handleResetBoard }) => {
+const EndGameModal = ({ winnerMark, setIsDurringGame, handleNextRound }) => {
   return (
     <ModalWrapper>
       <p className={styles.info}>
@@ -30,8 +30,8 @@ const EndGameModal = ({ winnerMark, setIsDurringGame, handleResetBoard }) => {
         <Button
           isSmall
           onClick={() => {
-            setIsDurringGame(false);
-            handleResetBoard();
+            // setIsDurringGame(false);
+            handleNextRound();
           }}
         >
           next round

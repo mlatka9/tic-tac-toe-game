@@ -4,7 +4,6 @@ import StatsPanel from 'components/StatsPanel/StatsPanel';
 import styles from './GameView.module.scss';
 import { useState, useEffect } from 'react';
 import produce from 'immer';
-import EndGameModal from 'components/EndGameModal/EndGameModal';
 
 const initBoard = [
   [null, null, null],
@@ -13,13 +12,55 @@ const initBoard = [
 ];
 
 const GameView = ({ players, setIsDurringGame }) => {
-  const [currentTurn, setCurrentTurn] = useState('X');
+  const [currentMark, setCurrentMark] = useState('X');
   const [board, setBoard] = useState(initBoard);
   const [scores, setScores] = useState({
     X: 0,
     O: 0,
     ties: 0,
   });
+  const [winner, setWinner] = useState(null);
+
+  useEffect(() => {
+    if (players[currentMark] === 'cpu') {
+      const indexSelectedByCpu = selectCpuMove();
+      handleUpdateBoard(indexSelectedByCpu);
+      console.log('CPU MOVE');
+    }
+  }, [currentMark]);
+
+  // const minimax = () => {
+
+  // }
+
+  const selectCpuMove = () => {
+    const flattenedBoard = board.reduce((acc, row) => acc.concat([...row]), []);
+    const filteredIndexes = flattenedBoard
+      .map((elem, index) => (elem === null ? index : null))
+      .filter((elem) => elem !== null);
+    const randomIndex =
+      filteredIndexes[Math.floor(Math.random() * filteredIndexes.length)];
+    return randomIndex;
+  };
+
+  const handleUpdateBoard = (index) => {
+    const nextBoard = updateBoard(index, currentMark);
+    const flattenedNextBoard = nextBoard.reduce(
+      (acc, row) => acc.concat([...row]),
+      []
+    );
+    if (checkWinner(nextBoard)) {
+      // setIsEndGameModalOpen(true);
+      incrementScoreToPlayer(currentMark);
+      setWinner(currentMark);
+    } else if (!flattenedNextBoard.includes(null)) {
+      incrementScoreToPlayer('ties');
+      // setIsEndGameModalOpen(true);
+      setWinner('ties');
+    } else {
+      handleSetNextMark();
+    }
+  };
 
   const handleResetBoard = () => {
     setBoard(initBoard);
@@ -52,8 +93,8 @@ const GameView = ({ players, setIsDurringGame }) => {
     setScores({ ...scores, [player]: scores[player] + 1 });
   };
 
-  const handleSetNextTurn = () => {
-    setCurrentTurn(currentTurn === 'X' ? 'O' : 'X');
+  const handleSetNextMark = () => {
+    setCurrentMark(currentMark === 'X' ? 'O' : 'X');
   };
 
   const updateBoard = (index, mark) => {
@@ -69,12 +110,15 @@ const GameView = ({ players, setIsDurringGame }) => {
 
   return (
     <section className={styles.wrapper}>
-      <Header currentTurn={currentTurn} setIsDurringGame={setIsDurringGame} />
+      <Header currentMark={currentMark} setIsDurringGame={setIsDurringGame} />
       <Board
+        handleUpdateBoard={handleUpdateBoard}
         board={board}
         updateBoard={updateBoard}
-        currentTurn={currentTurn}
-        handleSetNextTurn={handleSetNextTurn}
+        currentMark={currentMark}
+        // handleSetNextMark={handleSetNextMark}
+        winner={winner}
+        setWinner={setWinner}
         checkWinner={checkWinner}
         incrementScoreToPlayer={incrementScoreToPlayer}
         handleResetBoard={handleResetBoard}
