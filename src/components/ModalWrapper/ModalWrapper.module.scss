@@ -1,3 +1,13 @@
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+        transform: translateY(calc(-50% - 20px));
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
 .wrapper {
     position: absolute;
     background-color: var(--color-semi-dark-navy);
@@ -11,6 +21,7 @@
     align-items: center;
     padding: 45px 0;
     z-index: 100;
+    animation: fadeIn 300ms ease-in-out;
 }
 
 .shadow {

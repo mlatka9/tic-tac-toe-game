@@ -7,7 +7,7 @@ import styles from './Header.module.scss';
 import { useState } from 'react';
 import RestartModal from 'components/RestartModal/RestartModal';
 
-const Header = ({ currentTurn, setIsDurringGame }) => {
+const Header = ({ currentMark, setIsDurringGame }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -28,7 +28,7 @@ const Header = ({ currentTurn, setIsDurringGame }) => {
       <div className={styles.wrapper}>
         <Logo />
         <div className={styles.turnCard}>
-          {currentTurn === 'X' ? (
+          {currentMark === 'X' ? (
             <IconX className={styles.icon} />
           ) : (
             <IconO className={styles.icon} />
@@ -36,7 +36,12 @@ const Header = ({ currentTurn, setIsDurringGame }) => {
 
           <span>turn</span>
         </div>
-        <Button isTertiary isSmall onClick={handleOpenModal}>
+        <Button
+          isTertiary
+          isSmall
+          onClick={handleOpenModal}
+          // className={styles.resetButton}
+        >
           <Icon />
         </Button>
       </div>

@@ -4,7 +4,13 @@ import { ReactComponent as IconO } from 'assets/icon-o.svg';
 import { ReactComponent as IconXOutline } from 'assets/icon-x-outline.svg';
 import { ReactComponent as IconOOutline } from 'assets/icon-o-outline.svg';
 
-const BoardCard = ({ mark, currentMark, updateBoard, isBlocked }) => {
+const BoardCard = ({
+  mark,
+  currentMark,
+  updateBoard,
+  isBlocked,
+  isCPUSelecting,
+}) => {
   const getMark = () => {
     if (mark === 'X') {
       return <IconX className={styles.markImage} />;
@@ -17,7 +23,7 @@ const BoardCard = ({ mark, currentMark, updateBoard, isBlocked }) => {
         <IconXOutline
           className={`${styles.hoveredMarkImage} ${
             isBlocked && styles.isBlocked
-          }`}
+          }  ${isCPUSelecting && styles.hoveredMarkImageHidden}`}
         />
       );
     }
@@ -25,14 +31,14 @@ const BoardCard = ({ mark, currentMark, updateBoard, isBlocked }) => {
       <IconOOutline
         className={`${styles.hoveredMarkImage} ${
           isBlocked && styles.isBlocked
-        }`}
+        } ${isCPUSelecting && styles.hoveredMarkImageHidden}`}
       />
     );
   };
 
   return (
     <div
-      className={`${styles.boardCard} ${!mark && styles.notMarked} `}
+      className={`${styles.boardCard} ${!mark ? styles.notMarked : ''}`}
       onClick={() => {
         if (isBlocked || mark) return;
         updateBoard();

@@ -1,3 +1,16 @@
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
 .boardCard {
     width: 100%;
     max-width: 200px;
@@ -14,6 +27,9 @@
     &:hover .hoveredMarkImage{
         opacity: 1;
     }
+    &:hover .hoveredMarkImageHidden{
+        opacity: 0;
+    }
 }
 
 .notMarked { 
@@ -21,9 +37,14 @@
 }
 
 .hoveredMarkImage {
+    transition: opacity 100ms ease-in-out;
     opacity: 0;
 }
 
 .isBlocked {
     opacity: 0 !important;
+}
+
+.markImage{
+    animation: fadeIn 350ms ease-in-out;
 }

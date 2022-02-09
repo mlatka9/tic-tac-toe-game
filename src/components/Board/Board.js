@@ -10,8 +10,9 @@ const Board = ({
   handleUpdateBoard,
   handleResetBoard,
   setIsDurringGame,
+  isCPUSelecting,
 }) => {
-  const flattenedBoard = board.reduce((acc, row) => acc.concat([...row]), []);
+  // const flattenedBoard = board.reduce((acc, row) => acc.concat([...row]), []);
   // const [isEndGameModalOpen, setIsEndGameModalOpen] = useState(false);
 
   const handleNextRound = () => {
@@ -22,13 +23,14 @@ const Board = ({
   return (
     <>
       <div className={styles.wrapper}>
-        {flattenedBoard.map((mark, index) => (
+        {board.map((mark, index) => (
           <BoardCard
             isBlocked={Boolean(winner)}
             key={index}
             currentMark={currentMark}
             mark={mark}
             updateBoard={() => handleUpdateBoard(index)}
+            isCPUSelecting={isCPUSelecting}
           />
         ))}
       </div>

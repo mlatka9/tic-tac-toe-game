@@ -4,6 +4,14 @@
     align-items: center;
     button {
         justify-self: flex-end;
+        svg{
+            transition: transform 150ms ease-in;
+        }
+        &:hover{
+            svg{
+                transform: rotate(30deg);
+            }
+        }
     }
 }
 
@@ -29,3 +37,5 @@
     text-transform: uppercase;
     color: var(--color-silver);
 }
+
+

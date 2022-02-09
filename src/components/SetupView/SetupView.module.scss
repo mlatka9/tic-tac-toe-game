@@ -63,6 +63,7 @@
     justify-content: center;
     align-items: center;
     padding: 11px 0;
+    transition: background-color 100ms ease-in-out;
     &:not(&Selected):hover{
         background-color: rgba(168, 191, 201, 0.05);
     }

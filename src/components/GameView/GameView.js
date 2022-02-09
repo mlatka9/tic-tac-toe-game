@@ -5,11 +5,7 @@ import styles from './GameView.module.scss';
 import { useState, useEffect } from 'react';
 import produce from 'immer';
 
-const initBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
+const initBoard = [null, null, null, null, null, null, null, null, null];
 
 const GameView = ({ players, setIsDurringGame }) => {
   const [currentMark, setCurrentMark] = useState('X');
@@ -20,22 +16,23 @@ const GameView = ({ players, setIsDurringGame }) => {
     ties: 0,
   });
   const [winner, setWinner] = useState(null);
+  const [isCPUSelecting, setIsCPUSelecting] = useState(false);
 
   useEffect(() => {
+    if (winner) return;
     if (players[currentMark] === 'cpu') {
-      const indexSelectedByCpu = selectCpuMove();
-      handleUpdateBoard(indexSelectedByCpu);
-      console.log('CPU MOVE');
+      setIsCPUSelecting(true);
+
+      setTimeout(() => {
+        const indexSelectedByCpu = selectCpuMove();
+        handleUpdateBoard(indexSelectedByCpu);
+        setIsCPUSelecting(false);
+      }, 500);
     }
-  }, [currentMark]);
-
-  // const minimax = () => {
-
-  // }
+  }, [currentMark, winner]);
 
   const selectCpuMove = () => {
-    const flattenedBoard = board.reduce((acc, row) => acc.concat([...row]), []);
-    const filteredIndexes = flattenedBoard
+    const filteredIndexes = board
       .map((elem, index) => (elem === null ? index : null))
       .filter((elem) => elem !== null);
     const randomIndex =
@@ -44,18 +41,14 @@ const GameView = ({ players, setIsDurringGame }) => {
   };
 
   const handleUpdateBoard = (index) => {
+    if (isCPUSelecting) return;
     const nextBoard = updateBoard(index, currentMark);
-    const flattenedNextBoard = nextBoard.reduce(
-      (acc, row) => acc.concat([...row]),
-      []
-    );
-    if (checkWinner(nextBoard)) {
-      // setIsEndGameModalOpen(true);
+    const checkedWinner = checkWinner(nextBoard);
+    if (checkedWinner === 'X' || checkedWinner === 'O') {
       incrementScoreToPlayer(currentMark);
       setWinner(currentMark);
-    } else if (!flattenedNextBoard.includes(null)) {
+    } else if (checkedWinner === 'ties') {
       incrementScoreToPlayer('ties');
-      // setIsEndGameModalOpen(true);
       setWinner('ties');
     } else {
       handleSetNextMark();
@@ -64,6 +57,7 @@ const GameView = ({ players, setIsDurringGame }) => {
 
   const handleResetBoard = () => {
     setBoard(initBoard);
+    setCurrentMark('X');
   };
 
   const equals3 = (a, b, c) => {
@@ -74,18 +68,21 @@ const GameView = ({ players, setIsDurringGame }) => {
   const checkWinner = (board) => {
     //columns
     for (let i = 0; i < 3; i++) {
-      if (equals3(board[0][i], board[1][i], board[2][i])) return true;
+      if (equals3(board[i], board[i + 3], board[i + 6])) return board[i];
     }
 
     //rows
-    for (let i = 0; i < 3; i++) {
-      if (equals3(board[i][0], board[i][1], board[i][2])) return true;
+    for (let i = 0; i < 9; i += 3) {
+      if (equals3(board[i], board[i + 1], board[i + 2])) return board[i];
     }
 
     //diagonal
-    if (equals3(board[0][0], board[1][1], board[2][2])) return true;
-    if (equals3(board[0][2], board[1][1], board[2][0])) return true;
+    if (equals3(board[0], board[4], board[8])) return board[0];
+    if (equals3(board[2], board[4], board[6])) return board[2];
 
+    if (!board.includes(null)) {
+      return 'ties';
+    }
     return false;
   };
 
@@ -98,11 +95,11 @@ const GameView = ({ players, setIsDurringGame }) => {
   };
 
   const updateBoard = (index, mark) => {
-    const rowIndex = Math.floor(index / 3);
-    const columnIndex = index % 3;
+    // const rowIndex = Math.floor(index / 3);
+    // const columnIndex = index % 3;
 
     const nextBoard = produce(board, (draftBoard) => {
-      draftBoard[rowIndex][columnIndex] = mark;
+      draftBoard[index] = mark;
     });
     setBoard(nextBoard);
     return nextBoard;
@@ -116,13 +113,13 @@ const GameView = ({ players, setIsDurringGame }) => {
         board={board}
         updateBoard={updateBoard}
         currentMark={currentMark}
-        // handleSetNextMark={handleSetNextMark}
         winner={winner}
         setWinner={setWinner}
         checkWinner={checkWinner}
         incrementScoreToPlayer={incrementScoreToPlayer}
         handleResetBoard={handleResetBoard}
         setIsDurringGame={setIsDurringGame}
+        isCPUSelecting={isCPUSelecting}
       />
       <StatsPanel scores={scores} />
     </section>
