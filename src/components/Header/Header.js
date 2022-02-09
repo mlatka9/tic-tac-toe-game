@@ -6,6 +6,7 @@ import Button from 'components/Button/Button';
 import styles from './Header.module.scss';
 import { useState } from 'react';
 import RestartModal from 'components/RestartModal/RestartModal';
+import PropTypes from 'prop-types';
 
 const Header = ({ currentMark, setIsDurringGame }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,12 +37,7 @@ const Header = ({ currentMark, setIsDurringGame }) => {
 
           <span>turn</span>
         </div>
-        <Button
-          isTertiary
-          isSmall
-          onClick={handleOpenModal}
-          // className={styles.resetButton}
-        >
+        <Button isTertiary isSmall onClick={handleOpenModal}>
           <Icon />
         </Button>
       </div>
@@ -53,6 +49,11 @@ const Header = ({ currentMark, setIsDurringGame }) => {
       )}
     </>
   );
+};
+
+Header.propTypes = {
+  currentMark: PropTypes.oneOf(['X', 'O']).isRequired,
+  setIsDurringGame: PropTypes.func.isRequired,
 };
 
 export default Header;

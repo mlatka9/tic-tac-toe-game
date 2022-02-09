@@ -3,8 +3,9 @@ import ModalWrapper from 'components/ModalWrapper/ModalWrapper';
 import { ReactComponent as IconX } from 'assets/icon-x.svg';
 import { ReactComponent as IconO } from 'assets/icon-o.svg';
 import styles from './EndGameModal.module.scss';
+import PropTypes from 'prop-types';
 
-const EndGameModal = ({ winnerMark, setIsDurringGame, handleNextRound }) => {
+const EndGameModal = ({ winnerMark, setIsDurringGame, handleSetNextRound }) => {
   return (
     <ModalWrapper>
       <p className={styles.info}>
@@ -30,8 +31,7 @@ const EndGameModal = ({ winnerMark, setIsDurringGame, handleNextRound }) => {
         <Button
           isSmall
           onClick={() => {
-            // setIsDurringGame(false);
-            handleNextRound();
+            handleSetNextRound();
           }}
         >
           next round
@@ -39,6 +39,12 @@ const EndGameModal = ({ winnerMark, setIsDurringGame, handleNextRound }) => {
       </div>
     </ModalWrapper>
   );
+};
+
+EndGameModal.propTypes = {
+  winnerMark: PropTypes.oneOf(['X', 'O', 'ties']),
+  setIsDurringGame: PropTypes.func,
+  handleSetNextRound: PropTypes.func,
 };
 
 export default EndGameModal;

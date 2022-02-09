@@ -4,6 +4,7 @@ import { ReactComponent as IconO } from 'assets/icon-o.svg';
 import Button from 'components/Button/Button';
 import { useState } from 'react';
 import styles from './SetupView.module.scss';
+import PropTypes from 'prop-types';
 
 const SetupView = ({ setIsDurringGame, setPlayers }) => {
   const [playerFirstMark, setPlayerFirstMark] = useState('X');
@@ -63,6 +64,11 @@ const SetupView = ({ setIsDurringGame, setPlayers }) => {
       </Button>
     </div>
   );
+};
+
+SetupView.propTypes = {
+  setIsDurringGame: PropTypes.func.isRequired,
+  setPlayers: PropTypes.func.isRequired,
 };
 
 export default SetupView;

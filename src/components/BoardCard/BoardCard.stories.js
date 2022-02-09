@@ -20,10 +20,10 @@ markO.args = {
 
 export const OMove = Template.bind({});
 OMove.args = {
-  currentTurn: 'O',
+  currentMark: 'O',
 };
 
 export const XMove = Template.bind({});
 XMove.args = {
-  currentTurn: 'X',
+  currentMark: 'X',
 };

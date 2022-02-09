@@ -8,5 +8,14 @@ export default {
 
 const Template = (args) => <Header {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const XTurn = Template.bind({});
+XTurn.args = {
+  setIsDurringGame: () => {},
+  currentMark: 'X',
+};
+
+export const OTurn = Template.bind({});
+OTurn.args = {
+  setIsDurringGame: () => {},
+  currentMark: 'O',
+};

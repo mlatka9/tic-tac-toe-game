@@ -6,8 +6,8 @@ function App() {
   const [isDurringGame, setIsDurringGame] = useState(false);
 
   const [players, setPlayers] = useState({
-    X: 'cpu',
-    O: 'cpu',
+    X: 'player',
+    O: 'player',
   });
 
   return isDurringGame ? (

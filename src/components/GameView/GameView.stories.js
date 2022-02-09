@@ -9,4 +9,10 @@ export default {
 const Template = (args) => <GameView {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  players: {
+    X: 'player',
+    O: 'player',
+  },
+  setIsDurringGame: () => {},
+};

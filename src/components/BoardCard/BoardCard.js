@@ -3,13 +3,14 @@ import { ReactComponent as IconX } from 'assets/icon-x.svg';
 import { ReactComponent as IconO } from 'assets/icon-o.svg';
 import { ReactComponent as IconXOutline } from 'assets/icon-x-outline.svg';
 import { ReactComponent as IconOOutline } from 'assets/icon-o-outline.svg';
+import PropTypes from 'prop-types';
 
 const BoardCard = ({
   mark,
   currentMark,
   updateBoard,
-  isBlocked,
-  isCPUSelecting,
+  isBlocked = false,
+  isCPUSelecting = false,
 }) => {
   const getMark = () => {
     if (mark === 'X') {
@@ -47,6 +48,14 @@ const BoardCard = ({
       {getMark()}
     </div>
   );
+};
+
+BoardCard.propTypes = {
+  mark: PropTypes.oneOf(['X', 'O']),
+  currentMark: PropTypes.oneOf(['X', 'O']),
+  updateBoard: PropTypes.func,
+  isBlocked: PropTypes.bool,
+  isCPUSelecting: PropTypes.bool,
 };
 
 export default BoardCard;

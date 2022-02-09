@@ -1,4 +1,5 @@
 import styles from './StatsPanel.module.scss';
+import PropTypes from 'prop-types';
 
 const StatsPanel = ({ scores }) => {
   return (
@@ -17,6 +18,14 @@ const StatsPanel = ({ scores }) => {
       </div>
     </div>
   );
+};
+
+StatsPanel.propTypes = {
+  scores: PropTypes.shape({
+    X: PropTypes.number,
+    O: PropTypes.number,
+    ties: PropTypes.number,
+  }),
 };
 
 export default StatsPanel;

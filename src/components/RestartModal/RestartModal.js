@@ -1,6 +1,7 @@
 import ModalWrapper from 'components/ModalWrapper/ModalWrapper';
 import Button from 'components/Button/Button';
 import styles from './RestartModal.module.scss';
+import PropTypes from 'prop-types';
 
 const RestartModal = ({ handleBackToSetup, handleCloseModal }) => {
   return (
@@ -16,6 +17,11 @@ const RestartModal = ({ handleBackToSetup, handleCloseModal }) => {
       </div>
     </ModalWrapper>
   );
+};
+
+RestartModal.propTypes = {
+  handleBackToSetup: PropTypes.func,
+  handleCloseModal: PropTypes.func,
 };
 
 export default RestartModal;
