@@ -16,11 +16,13 @@ Users should be able to:
 
 ### Screenshot
 
+![layout](https://user-images.githubusercontent.com/72691985/153424430-c208eb87-20cb-41c0-8bdd-5538a43648d6.PNG)
+
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [github.com/mlatka9/tic-tac-toe-game](https://github.com/mlatka9/tic-tac-toe-game)
+- Live Site URL: [click here](https://6205131985281520bd1efeeb--cranky-ride-bdfbbf.netlify.app/)
 
 ## My process
 
@@ -34,5 +36,5 @@ Users should be able to:
 
 ## Author
 
-- GitHub - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- GitHub - [mlatka9](https://github.com/mlatka9)
+- Frontend Mentor - [@mlatka9](https://www.frontendmentor.io/profile/mlatka9)
