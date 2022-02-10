@@ -9,7 +9,4 @@ export default {
 const Template = (args) => <SetupView {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-  setIsDurringGame: () => {},
-  setPlayers: () => {},
-};
+Primary.args = {};

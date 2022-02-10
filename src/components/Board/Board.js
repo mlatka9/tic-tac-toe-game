@@ -23,6 +23,7 @@ const Board = ({
             mark={mark}
             updateBoard={() => handleUpdateBoard(index)}
             isCPUSelecting={isCPUSelecting}
+            index={index}
           />
         ))}
       </div>

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import styles from './SetupView.module.scss';
 import PropTypes from 'prop-types';
 
-const SetupView = ({ setIsDurringGame, setPlayers }) => {
+const SetupView = ({ setIsDurringGame = () => {}, setPlayers = () => {} }) => {
   const [playerFirstMark, setPlayerFirstMark] = useState('X');
 
   const handleSetup = (opponent) => {
@@ -39,18 +39,22 @@ const SetupView = ({ setIsDurringGame, setPlayers }) => {
         <h1 className={header}>pick player 1's mark</h1>
         <div className={markWrapper}>
           <button
+            title="mark x"
             className={`${markButton} ${
               playerFirstMark === 'X' && markButtonSelected
             }`}
             onClick={() => setPlayerFirstMark('X')}
+            aria-pressed={playerFirstMark === 'X'}
           >
             <IconX className={markIcon} />
           </button>
           <button
+            title="mark o"
             className={`${markButton} ${
               playerFirstMark === 'O' && markButtonSelected
             }`}
             onClick={() => setPlayerFirstMark('O')}
+            aria-pressed={playerFirstMark === 'O'}
           >
             <IconO className={markIcon} />
           </button>
@@ -67,8 +71,8 @@ const SetupView = ({ setIsDurringGame, setPlayers }) => {
 };
 
 SetupView.propTypes = {
-  setIsDurringGame: PropTypes.func.isRequired,
-  setPlayers: PropTypes.func.isRequired,
+  setIsDurringGame: PropTypes.func,
+  setPlayers: PropTypes.func,
 };
 
 export default SetupView;

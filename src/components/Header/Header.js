@@ -35,9 +35,14 @@ const Header = ({ currentMark, setIsDurringGame }) => {
             <IconO className={styles.icon} />
           )}
 
-          <span>turn</span>
+          <span aria-label={`${currentMark} has current move`}>turn</span>
         </div>
-        <Button isTertiary isSmall onClick={handleOpenModal}>
+        <Button
+          isTertiary
+          isSmall
+          onClick={handleOpenModal}
+          aria-label="restart"
+        >
           <Icon />
         </Button>
       </div>

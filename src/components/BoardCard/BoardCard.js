@@ -11,6 +11,7 @@ const BoardCard = ({
   updateBoard,
   isBlocked = false,
   isCPUSelecting = false,
+  index,
 }) => {
   const getMark = () => {
     if (mark === 'X') {
@@ -39,6 +40,8 @@ const BoardCard = ({
 
   return (
     <div
+      data-marked-by={mark}
+      data-testid={`card-${index}`}
       className={`${styles.boardCard} ${!mark ? styles.notMarked : ''}`}
       onClick={() => {
         if (isBlocked || mark) return;

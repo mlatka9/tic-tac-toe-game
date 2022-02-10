@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const StatsPanel = ({ scores }) => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.statCard}>
+      <div className={styles.statCard} data-testid="stats-panel-x">
         <h3 className={styles.statTitle}>X (you)</h3>
         <span className={styles.statValue}>{scores.X}</span>
       </div>
