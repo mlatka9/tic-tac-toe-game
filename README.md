@@ -22,7 +22,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [github.com/mlatka9/tic-tac-toe-game](https://github.com/mlatka9/tic-tac-toe-game)
-- Live Site URL: [click here](https://6205131985281520bd1efeeb--cranky-ride-bdfbbf.netlify.app/)
+- Live Site URL: [click here](https://cranky-ride-bdfbbf.netlify.app/)
 
 ## My process
 
